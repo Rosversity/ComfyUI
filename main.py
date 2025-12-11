@@ -324,9 +324,26 @@ def start_comfyui(asyncio_loop=None):
     prompt_server = server.PromptServer(asyncio_loop)
 
     hook_breaker_ac10a0.save_functions()
+
+    #  # --- CUSTOM MODIFICATION: REMOVE DEFAULT CORE & API NODES ---
+    # # 1. Clear the dictionary of nodes that `nodes.py` populated on import (Core Nodes)
+    # nodes.NODE_CLASS_MAPPINGS.clear()
+    # nodes.NODE_DISPLAY_NAME_MAPPINGS.clear()
+    
+    # # 2. Prevent "Built-in Extra" nodes from loading
+    # # We override the function that loads comfy_extras to return nothing.
+    # async def no_op_extras():
+    #     return []
+    # nodes.init_builtin_extra_nodes = no_op_extras
+
+    # logging.info("Core and Default nodes have been removed. Only Custom Nodes will be loaded.")
+    # # ------------------------------------------------------------
+
     asyncio_loop.run_until_complete(nodes.init_extra_nodes(
-        init_custom_nodes=(not args.disable_all_custom_nodes) or len(args.whitelist_custom_nodes) > 0,
-        init_api_nodes=not args.disable_api_nodes
+        # init_custom_nodes=(not args.disable_all_custom_nodes) or len(args.whitelist_custom_nodes) > 0,
+        init_custom_nodes=True,
+        # init_api_nodes=not args.disable_api_nodes
+        init_api_nodes=False
     ))
     hook_breaker_ac10a0.restore_functions()
 
