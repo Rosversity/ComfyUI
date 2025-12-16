@@ -73,6 +73,8 @@ def test_imports():
             DT_WorkflowOutput,
         )
         logging.info("   ✓ Existing digital twin nodes imported successfully")
+        logging.info(f"     - {len([DT_APICall, DT_StateNode, DT_WorkflowOutput])} digital twin node classes")
+        logging.info(f"     - {len([DT_APICall, DT_StateNode, DT_WorkflowOutput])} digital twin node classes")
 
         logging.info("\n" + "="*60)
         logging.info("✅ ALL IMPORTS SUCCESSFUL!")
