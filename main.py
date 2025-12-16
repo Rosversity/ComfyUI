@@ -329,7 +329,7 @@ def start_comfyui(asyncio_loop=None):
     # # 1. Clear the dictionary of nodes that `nodes.py` populated on import (Core Nodes)
     # nodes.NODE_CLASS_MAPPINGS.clear()
     # nodes.NODE_DISPLAY_NAME_MAPPINGS.clear()
-    
+
     # # 2. Prevent "Built-in Extra" nodes from loading
     # # We override the function that loads comfy_extras to return nothing.
     # async def no_op_extras():

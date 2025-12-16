@@ -3,6 +3,7 @@ Digital Twin Widget Nodes - Input/Output interface nodes
 """
 import asyncio
 import time
+import logging
 from .state_manager import DigitalTwinStateManager
 from server import PromptServer
 
@@ -137,7 +138,7 @@ class DT_Widget_StatusOutput:
                 "timestamp": time.time()
             }))
         except Exception as e:
-            print(f"[DT Widget] Could not send WebSocket update: {e}")
+            logging.error(f"[DT Widget] Could not send WebSocket update: {e}")
 
         # Also store in state manager
         state_manager = DigitalTwinStateManager()
@@ -198,7 +199,7 @@ class DT_Widget_3DViewer:
 
             asyncio.create_task(server.send_json("twin_widget_update", update_data))
         except Exception as e:
-            print(f"[DT Widget] Could not send 3D update: {e}")
+            logging.error(f"[DT Widget] Could not send 3D update: {e}")
 
         return ()
 
@@ -239,7 +240,7 @@ class DT_Widget_ConnectionIndicator:
                 "timestamp": time.time()
             }))
         except Exception as e:
-            print(f"[DT Widget] Could not send indicator update: {e}")
+            logging.error(f"[DT Widget] Could not send indicator update: {e}")
 
         # Store state
         state_manager = DigitalTwinStateManager()
