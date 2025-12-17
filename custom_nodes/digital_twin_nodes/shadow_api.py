@@ -130,19 +130,19 @@ class ShadowAPIFunction:
         }
 
         # Execute code to define the function
-        exec(self.code, namespace)
+        exec(self.code, namespace)  # noqa: S102
 
         # Get the execute function
         if "execute" in namespace:
             self._compiled_func = namespace["execute"]
         else:
-            raise ValueError(f"Shadow API code must define 'async def execute(**kwargs)' function")
+            raise ValueError("Shadow API code must define 'async def execute(**kwargs)' function")
 
     def validate_args(self, **kwargs) -> bool:
         """Validate provided arguments match definition"""
         for arg_def in self.input_args:
             arg_name = arg_def["name"]
-            arg_type = arg_def["type"]
+            # arg_type = arg_def["type"]
 
             if arg_name not in kwargs:
                 # Check if has default
