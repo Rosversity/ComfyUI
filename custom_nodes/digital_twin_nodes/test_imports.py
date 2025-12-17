@@ -57,14 +57,14 @@ def test_imports():
         # Note: This requires PromptServer which may not be available in test
         try:
             from custom_nodes.digital_twin_nodes.server_extension import DigitalTwinServerExtension
-            logging.info("   ✓ Server extension imported successfully")
+            logging.info(f"   ✓ Server extension imported successfully: {DigitalTwinServerExtension.__name__}")
         except Exception as e:
             logging.info(f"   ⚠ Server extension import (expected if PromptServer not available): {e}")
 
         logging.info("\n6. Testing code_generator...")
         from custom_nodes.digital_twin_nodes.code_generator import DigitalTwinCodeGenerator
         generator = DigitalTwinCodeGenerator()
-        logging.info("   ✓ Code generator imported successfully")
+        logging.info(f"   ✓ Code generator imported successfully: {type(generator).__name__}")
 
         logging.info("\n7. Testing digital_twin_nodes (existing)...")
         from custom_nodes.digital_twin_nodes.digital_twin_nodes import (
