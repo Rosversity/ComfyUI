@@ -22,7 +22,7 @@ def test_imports():
         logging.info("1. Testing state_manager...")
         from custom_nodes.digital_twin_nodes.state_manager import DigitalTwinStateManager
         state = DigitalTwinStateManager()
-        logging.info("   ✓ State Manager imported successfully")
+        logging.info(f"   ✓ State Manager imported successfully: {type(state).__name__}")
 
         logging.info("\n2. Testing shadow_api...")
         from custom_nodes.digital_twin_nodes.shadow_api import (
@@ -31,6 +31,7 @@ def test_imports():
             ShadowAPIMode
         )
         logging.info("   ✓ Shadow API framework imported successfully")
+        logging.info(f"     - Classes: {ShadowAPIFunction.__name__}, {ShadowAPIRegistry.__name__}, {ShadowAPIMode.__name__}")
 
         logging.info("\n3. Testing widget_nodes...")
         from custom_nodes.digital_twin_nodes.widget_nodes import (

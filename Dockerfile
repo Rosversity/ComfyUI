@@ -15,7 +15,7 @@ COPY requirements.txt .
 
 # Install python dependencies
 # Using --no-cache-dir to keep image size small
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt
 
 # Copy the rest of the application
 COPY . .
