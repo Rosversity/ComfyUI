@@ -1,0 +1,54 @@
+"""
+Custom ComfyUI nodes for Roslab Digital Twin Platform
+
+This module exports all custom nodes for registration with ComfyUI.
+"""
+
+import os
+
+# Tell ComfyUI where to find our web extensions
+WEB_DIRECTORY = os.path.join(os.path.dirname(__file__), "web")
+
+from .config_nodes import (
+    NODE_CLASS_MAPPINGS as CONFIG_NODE_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as CONFIG_DISPLAY_MAPPINGS
+)
+from .widget_nodes import (
+    NODE_CLASS_MAPPINGS as WIDGET_NODE_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as WIDGET_DISPLAY_MAPPINGS
+)
+from .system_nodes import (
+    NODE_CLASS_MAPPINGS as SYSTEM_NODE_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as SYSTEM_DISPLAY_MAPPINGS
+)
+from .asset_nodes import (
+    NODE_CLASS_MAPPINGS as ASSET_NODE_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as ASSET_DISPLAY_MAPPINGS
+)
+from .generator_node import (
+    NODE_CLASS_MAPPINGS as GENERATOR_NODE_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as GENERATOR_DISPLAY_MAPPINGS
+)
+
+# Combine all node mappings
+NODE_CLASS_MAPPINGS = {
+    **CONFIG_NODE_MAPPINGS,
+    **WIDGET_NODE_MAPPINGS,
+    **SYSTEM_NODE_MAPPINGS,
+    **ASSET_NODE_MAPPINGS,
+    **GENERATOR_NODE_MAPPINGS,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    **CONFIG_DISPLAY_MAPPINGS,
+    **WIDGET_DISPLAY_MAPPINGS,
+    **SYSTEM_DISPLAY_MAPPINGS,
+    **ASSET_DISPLAY_MAPPINGS,
+    **GENERATOR_DISPLAY_MAPPINGS,
+}
+
+__all__ = [
+    'NODE_CLASS_MAPPINGS',
+    'NODE_DISPLAY_NAME_MAPPINGS',
+    'WEB_DIRECTORY',
+]
