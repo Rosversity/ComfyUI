@@ -44,6 +44,12 @@ class ProcessSettingsNode(RoslabConfigNode):
                     "default": "",
                     "multiline": False
                 }),
+                "program_selection": ("INT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": 99,
+                    "tooltip": "PLC program/experiment selection number (DB2.0 WORD)"
+                }),
                 "plc_mode": (["auto", "real", "mock"], {
                     "default": "auto"
                 }),
@@ -75,7 +81,7 @@ class ProcessSettingsNode(RoslabConfigNode):
     CATEGORY = "Rlab/pneumatic-kit/config"
 
     def execute(self, process_name, description, project_name,
-                ladder_logic_file="", plc_mode="auto", scan_cycle_ms=50,
+                ladder_logic_file="", program_selection=1, plc_mode="auto", scan_cycle_ms=50,
                 plc_ip="192.168.0.1", plc_rack=0, plc_slot=1):
         """
         Execute process settings configuration
@@ -89,6 +95,7 @@ class ProcessSettingsNode(RoslabConfigNode):
             "description": description,
             "project_name": project_name,
             "ladder_logic_file": ladder_logic_file,
+            "program_selection": program_selection,
             "plc_config": {
                 "mode": plc_mode,
                 "scan_cycle_ms": scan_cycle_ms,
